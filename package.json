@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "estack dev src/**/*.{html,md}",
-    "build": "estack build src docs",
+    "build": "estack build src/*.html docs",
     "build:npm": "estack build src/components/**/*.{js,jsx,ts,tsx} dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
     "create:hook": "tfolder tfolder/hook src/hooks"
