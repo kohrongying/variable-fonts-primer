@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to Atomico just 3Kb to create amazing webcomponents 
+based on virtual-dom, Hoosk and magic props
+" />
+    <title>Var Fonts</title>
+    <link rel="stylesheet" href="./assets/1371-style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap" rel="stylesheet">
+    <script async type="module" src="./assets/1230-index.js"></script>
+  </head>
+  <body>
+    <main>
+      <atomico-brand width="220px" color="black"></atomico-brand><br />
+      
+      <block-component 
+        header="MONOSPACE"
+        attr="mono"
+        min='{
+          "value": 0,
+          "description": "Sans (natural width)"
+        }'
+        max='{
+          "value": 1,
+          "description": "Mono (fixed width)"
+        }'
+      ></block-component>
+
+      <block-component 
+        header="CASUAL"
+        attr="casl"
+        min='{
+          "value": 0,
+          "description": "Linear"
+        }'
+        max='{
+          "value": 1,
+          "description": "Casual"
+        }'
+      ></block-component>
+
+      <block-component 
+        header="SLANT"
+        attr="slnt"
+        min='{
+          "value": -15,
+          "description": "Very slanted"
+        }'
+        max='{
+          "value": 0,
+          "description": "No Slant"
+        }'
+      ></block-component>
+
+      <block-component 
+        header="CURSIVE"
+        attr="CRSV"
+        min='{
+          "value": 0,
+          "description": "Roman"
+        }'
+        max='{
+          "value": 1,
+          "description": "Cursive"
+        }'
+      ></block-component>
+    </main>
+  </body>
+</html>
