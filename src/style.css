@@ -1,6 +1,7 @@
-html {
-  font-size: 14px;
+* {
+  box-sizing: border-box;
 }
+
 html,
 body {
   width: 100%;
@@ -10,16 +11,11 @@ body {
 
 body {
   font-family: 'Recursive', sans-serif;
-  /* font-size: 20px; */
 }
 
 main {
   max-width: 60vw;
   margin: auto;
-}
-
-.cols-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

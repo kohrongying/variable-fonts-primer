@@ -1,11 +1,7 @@
 ---
 title: Var Fonts
 description: |
-  Welcome to Atomico just 3Kb to create amazing webcomponents 
-  based on virtual-dom, Hoosk and magic props
-tips:
-  - "> npm run create:component <span># Create a component skeleton</span>"
-  - "> npm run create:hooks <span># Create a skeleton hook</span>"
+  A variable fonts primer by rongying
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +16,9 @@ tips:
   </head>
   <body>
     <main>
-      <atomico-brand width="220px" color="black"></atomico-brand><br />
+      <h1>A Variable Fonts Primer</h1>
       
+      <playground-component></playground-component>
       <block-component 
         header="MONOSPACE"
         attr="mono"
@@ -49,11 +46,24 @@ tips:
       ></block-component>
 
       <block-component 
+        header="WEIGHT"
+        attr="wght"
+        min='{
+          "value": 300,
+          "description": "Thin"
+        }'
+        max='{
+          "value": 900,
+          "description": "Heavy"
+        }'
+      ></block-component>
+
+      <block-component 
         header="SLANT"
         attr="slnt"
         min='{
           "value": -15,
-          "description": "Very slanted"
+          "description": "Slanted"
         }'
         max='{
           "value": 0,

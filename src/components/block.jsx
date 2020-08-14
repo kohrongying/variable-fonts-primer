@@ -1,4 +1,5 @@
 import { h, c, useState } from "atomico";
+import { css } from "otion";
 
 const BlockComponent = ({ header, attr, min, max }) => {
   const [maxInput] = useState(JSON.parse(max))
@@ -19,7 +20,7 @@ const BlockComponent = ({ header, attr, min, max }) => {
         grid-gap: 10px;
       }
       `}</style>
-      <div>
+      <div className={css({ paddingTop: 20 })}>
         <h2>{header}</h2>
         <div class="cols">
           <div>

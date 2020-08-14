@@ -1,19 +1,21 @@
-import { h, c, useEffect } from "atomico";
+import { h, c } from "atomico";
 import { css } from "otion";
 
-const MyComponent = ({ mono, casl, wght, slnt, CRSV }) => {
+const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle }) => {
   return (
     <host>
-      <h3 className={css({ 
+      <div className={css({ 
           fontVariationSettings: `'MONO' ${mono}, 'CASL' ${casl}, 'wght' ${wght}, 'slnt' ${slnt}, 'CRSV' ${CRSV}`,
           padding: 20,
-          backgroundColor: "lightgrey",
+          backgroundColor: "#eaeaea",
           borderRadius: "10px",
-          fontSize: "20px"
+          fontSize: "24px",
+          marginTop: 8,
+          ...JSON.parse(textStyle)
         })
       }>
         The quick brown fox jumps over the lazy dog
-      </h3>
+      </div>
     </host>
   )
 }
@@ -39,6 +41,10 @@ MyComponent.props = {
   CRSV: {
     type: Number,
     value: 0
+  },
+  textStyle: {
+    type: String,
+    value: '{}'
   }
 }
 
