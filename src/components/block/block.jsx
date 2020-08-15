@@ -16,8 +16,8 @@ const BlockComponent = ({ header, attr, min, max }) => {
       <style>{`
       .cols {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 60px 10px;
       }
       `}</style>
       <div className={css({ paddingTop: 20 })}>

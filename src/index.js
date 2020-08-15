@@ -1,4 +1,7 @@
 import "./components/block/block"
+import "./components/divider/divider"
+import "./components/font-pairings/font-pairings"
+import "./components/footer/footer"
 import "./components/playground/playground"
 import "./components/playground-slider/playground-slider"
 import "./components/text/text"

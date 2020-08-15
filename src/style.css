@@ -14,8 +14,9 @@ body {
 }
 
 main {
-  max-width: 60vw;
-  margin: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 10px;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: minmax(320px, 60vw);
+  justify-content: center;
 }

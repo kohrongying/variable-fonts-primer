@@ -1,7 +1,7 @@
 import { h, c } from "atomico";
 import { css } from "otion";
 
-const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle }) => {
+const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text }) => {
   return (
     <host>
       <div className={css({ 
@@ -14,7 +14,7 @@ const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle }) => {
           ...JSON.parse(textStyle)
         })
       }>
-        The quick brown fox jumps over the lazy dog
+        {text}
       </div>
     </host>
   )
@@ -45,6 +45,10 @@ MyComponent.props = {
   textStyle: {
     type: String,
     value: '{}'
+  },
+  text: {
+    type: String,
+    value: 'The quick brown fox jumps over the lazy dog'
   }
 }
 
