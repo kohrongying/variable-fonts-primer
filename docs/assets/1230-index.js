@@ -828,8 +828,8 @@ const BlockComponent = ({ header, attr, min, max }) => {
       , h('style', null, `
       .cols {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 60px 10px;
       }
       `)
       , h('div', { className: A({ paddingTop: 20 }),}
@@ -858,6 +858,134 @@ BlockComponent.props = {
 };
 
 customElements.define("block-component", c(BlockComponent));
+
+const Divider = () => {
+  return (
+    h('host', null
+      , h('hr', { className: A({
+        marginTop: 50
+      }),})
+    )
+  )
+};
+
+
+customElements.define("divider-component", c(Divider));
+
+const headingStyle = `{
+  "fontSize": 36,
+  "backgroundColor": "white",
+  "padding": 0,
+  "paddingRight": 10
+}`;
+
+const bodyStyle = `{
+  "backgroundColor": "white",
+  "padding": 0,
+  "paddingTop": 10
+}`;
+
+
+const FontPairings = () => {
+  return (
+    h('host', null
+      , h('div', { className: A({ paddingTop: 20 }),}
+        , h('h2', null, "FONT PAIRINGS" )
+
+        , h('div', { class: "cols",}
+
+          , h('div', null
+            , h('span', null, "Variation 1" )
+              , h('text-component', { 
+                mono: "0.5",
+                wght: "700",
+                textStyle: headingStyle,
+                text: "Six Strong is Stronger Together"    ,}
+              )
+              , h('text-component', { 
+                wght: "300",
+                textStyle: bodyStyle,}
+              )
+            )
+
+          , h('div', null
+            , h('span', null, "Variation 2" )
+            , h('text-component', { 
+              wght: "700",
+              mono: "0.4",
+              CRSV: "1",
+              textStyle: headingStyle,
+              text: "Why you should eat more vegetables"     ,}
+            )
+            , h('text-component', { 
+                wght: "300",
+                textStyle: "{ \"backgroundColor\": \"white\", \"padding\": 0, \"paddingTop\": 10, \"fontFamily\": \"sans-serif\", \"fontWeight\": 100 }"
+
+
+
+
+
+                ,}
+              )
+          )
+
+          , h('div', null
+            , h('span', null, "Variation 3" )
+            , h('text-component', { 
+              wght: "700",
+              casl: "0.5",
+              mono: "0.3",
+              textStyle: headingStyle,
+              text: "10 Reasons you need to follow me on Twitter"        ,}
+            )
+            , h('text-component', { 
+                wght: "300",
+                casl: "1",
+                slnt: "-14",
+                textStyle: bodyStyle,
+                text: "This is really not clickbait. Reason #4 will explain it all."          ,}
+              )
+          )
+
+          , h('div', null
+            , h('span', null, "Variation 4" )
+            , h('text-component', { 
+              wght: "500",
+              slnt: "-10",
+              casl: "1",
+              CRSV: "1",
+              textStyle: headingStyle,
+              text: "10 Reasons you need to follow me on Twitter"        ,}
+            )
+            , h('text-component', { 
+                wght: "300",
+                casl: "0",
+                CRSV: "0.5",
+                textStyle: bodyStyle,
+                text: "This is really not clickbait. Reason #4 will explain it all."          ,}
+              )
+          )
+        )
+      )
+    )
+  )
+};
+
+customElements.define("font-pairings", c(FontPairings));
+
+const Footer = () => {
+  return (
+    h('host', null
+      , h('p', null, "Created by rongying. I know I butchered the font pairings. Font used: "
+                    , h('a', { href: "https://www.recursive.design/",}, "Recursive.")
+      )
+      , h('a', { href: "https://github.com/kohrongying/variable-fonts-primer",}, "Github Source Code"  )
+    )
+  )
+};
+
+
+customElements.define("footer-component", c(Footer));
 
 const Playground = () => {
   const [mono, setMono] = useState(0);
@@ -986,7 +1114,7 @@ PlaygroundSlider.props = {
 
 customElements.define("playground-slider", c(PlaygroundSlider));
 
-const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle }) => {
+const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text }) => {
   return (
     h('host', null
       , h('div', { className: A({ 
@@ -998,8 +1126,8 @@ const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle }) => {
           marginTop: 8,
           ...JSON.parse(textStyle)
         })
-      ,}, "The quick brown fox jumps over the lazy dog"
-
+      ,}
+        , text
       )
     )
   )
@@ -1030,6 +1158,10 @@ MyComponent.props = {
   textStyle: {
     type: String,
     value: '{}'
+  },
+  text: {
+    type: String,
+    value: 'The quick brown fox jumps over the lazy dog'
   }
 };
 
