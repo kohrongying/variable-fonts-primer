@@ -5,13 +5,14 @@ const headingStyle = `{
   "fontSize": 36,
   "backgroundColor": "white",
   "padding": 0,
-  "paddingRight": 10
+  "paddingRight": 20
 }`
 
 const bodyStyle = `{
   "backgroundColor": "white",
   "padding": 0,
-  "paddingTop": 10
+  "marginTop": 10,
+  "paddingRight": 20
 }`
 
 
@@ -48,13 +49,8 @@ const FontPairings = () => {
             ></text-component>
             <text-component 
                 wght='300'
-                textStyle='{
-                  "backgroundColor": "white",
-                  "padding": 0,
-                  "paddingTop": 10,
-                  "fontFamily": "sans-serif",
-                  "fontWeight": 100
-                }'
+                fontFamily="sans-serif"
+                textStyle={bodyStyle}
               ></text-component>
           </div>
 
