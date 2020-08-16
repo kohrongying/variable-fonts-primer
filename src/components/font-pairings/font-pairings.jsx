@@ -57,9 +57,8 @@ const FontPairings = () => {
           <div>
             <span>Variation 3</span>
             <text-component 
-              wght='700'
-              casl='0.5'
-              mono='0.3'
+              wght='900'
+              mono='0.2'
               textStyle={headingStyle}
               text='10 Reasons you need to follow me on Twitter'
             ></text-component>
@@ -90,6 +89,7 @@ const FontPairings = () => {
                 text='This is really not clickbait. Reason #4 will explain it all.'
               ></text-component>
           </div>
+
         </div>
       </div>
     </host>
