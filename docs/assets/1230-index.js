@@ -829,7 +829,7 @@ const BlockComponent = ({ header, attr, min, max }) => {
       .cols {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 60px 10px;
+        grid-gap: 30px 10px;
       }
       `)
       , h('div', { className: A({ paddingTop: 20 }),}
@@ -876,13 +876,14 @@ const headingStyle = `{
   "fontSize": 36,
   "backgroundColor": "white",
   "padding": 0,
-  "paddingRight": 10
+  "paddingRight": 20
 }`;
 
 const bodyStyle = `{
   "backgroundColor": "white",
   "padding": 0,
-  "paddingTop": 10
+  "marginTop": 10,
+  "paddingRight": 20
 }`;
 
 
@@ -919,22 +920,16 @@ const FontPairings = () => {
             )
             , h('text-component', { 
                 wght: "300",
-                textStyle: "{ \"backgroundColor\": \"white\", \"padding\": 0, \"paddingTop\": 10, \"fontFamily\": \"sans-serif\", \"fontWeight\": 100 }"
-
-
-
-
-
-                ,}
+                fontFamily: "sans-serif",
+                textStyle: bodyStyle,}
               )
           )
 
           , h('div', null
             , h('span', null, "Variation 3" )
             , h('text-component', { 
-              wght: "700",
-              casl: "0.5",
-              mono: "0.3",
+              wght: "900",
+              mono: "0.2",
               textStyle: headingStyle,
               text: "10 Reasons you need to follow me on Twitter"        ,}
             )
@@ -965,6 +960,7 @@ const FontPairings = () => {
                 text: "This is really not clickbait. Reason #4 will explain it all."          ,}
               )
           )
+
         )
       )
     )
@@ -1006,7 +1002,9 @@ const Playground = () => {
       
       )
 
-      , h('div', null, "font-variation-settings:"
+      , h('div', { className: A({
+        fontVariationSettings: `'MONO' 1, 'CASL' 0, 'wght' 400, 'slnt' 0, 'CRSV' 0`,
+      }),}, "font-variation-settings:"
 
         , h('playground-slider', {
           className: A({ flex: 3 }),
@@ -1114,11 +1112,28 @@ PlaygroundSlider.props = {
 
 customElements.define("playground-slider", c(PlaygroundSlider));
 
-const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text }) => {
+const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text, fontFamily }) => {
+  const copyToClipboard = () => {
+    const style = `
+      font-variation-settings: 'MONO' ${mono}, 'CASL' ${casl}, 'wght' ${wght}, 'slnt' ${slnt}, 'CRSV' ${CRSV},
+      font-family: ${fontFamily}
+    `;
+    navigator.clipboard.writeText(style).then(function() {
+      // console.log('Async: Copying to clipboard was successful!');
+      setCopied(true);
+    }, function(err) {
+      console.error('Async: Could not copy text: ', err);
+    });
+  };
+
+  const [copied, setCopied] = useState(false);
+
   return (
     h('host', null
       , h('div', { className: A({ 
           fontVariationSettings: `'MONO' ${mono}, 'CASL' ${casl}, 'wght' ${wght}, 'slnt' ${slnt}, 'CRSV' ${CRSV}`,
+          fontFamily,
+          position: "relative",
           padding: 20,
           backgroundColor: "#eaeaea",
           borderRadius: "10px",
@@ -1128,6 +1143,27 @@ const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text }) => {
         })
       ,}
         , text
+        , h('div', { className: A({
+          position: "absolute",
+          top: 0, right: 2,
+          ":hover": {
+            cursor: "pointer"
+          }
+        }), onclick: copyToClipboard,}
+          , copied ? (
+            h('svg', { xmlns: "http://www.w3.org/2000/svg", class: "icon icon-tabler icon-tabler-check"  , width: "20", height: "20", viewBox: "0 0 24 24"   , 'stroke-width': "1.5", stroke: "#4CAF50", fill: "none", 'stroke-linecap': "round", 'stroke-linejoin': "round",}
+              , h('path', { stroke: "none", d: "M0 0h24v24H0z" ,})
+              , h('path', { d: "M5 12l5 5l10 -10"   ,} )
+            )
+          ) : (
+            h('svg', { xmlns: "http://www.w3.org/2000/svg", class: "icon icon-tabler icon-tabler-copy"  , width: "20", height: "20", viewBox: "0 0 24 24"   , 'stroke-width': "1", stroke: "#000000aa", fill: "none", 'stroke-linecap': "round", 'stroke-linejoin': "round",}
+              , h('path', { stroke: "none", d: "M0 0h24v24H0z" ,})
+              , h('rect', { x: "8", y: "8", width: "12", height: "12", rx: "2",} )
+              , h('path', { d: "M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"                   ,} )
+            )
+          )
+
+        )
       )
     )
   )
@@ -1162,6 +1198,10 @@ MyComponent.props = {
   text: {
     type: String,
     value: 'The quick brown fox jumps over the lazy dog'
+  },
+  fontFamily: {
+    type: String,
+    value: "Recursive"
   }
 };
 
