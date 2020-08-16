@@ -1,11 +1,12 @@
 import { h, c } from "atomico";
 import { css } from "otion";
 
-const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text }) => {
+const MyComponent = ({ mono, casl, wght, slnt, CRSV, textStyle, text, fontFamily }) => {
   return (
     <host>
       <div className={css({ 
           fontVariationSettings: `'MONO' ${mono}, 'CASL' ${casl}, 'wght' ${wght}, 'slnt' ${slnt}, 'CRSV' ${CRSV}`,
+          fontFamily,
           padding: 20,
           backgroundColor: "#eaeaea",
           borderRadius: "10px",
@@ -49,6 +50,10 @@ MyComponent.props = {
   text: {
     type: String,
     value: 'The quick brown fox jumps over the lazy dog'
+  },
+  fontFamily: {
+    type: String,
+    value: "Recursive"
   }
 }
 
