@@ -20,4 +20,8 @@ https://github.com/atomicojs/atomico/blob/master/src/tests/element.test.js
 
 certain props names are invalid
 - id, title
+
+# running tests
+// expect(el).lightDom.to.equal('p')
+
 -->

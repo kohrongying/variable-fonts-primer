@@ -15,14 +15,22 @@
     "build": "estack build src/*.html docs",
     "build:npm": "estack build src/components/**/*.{js,jsx,ts,tsx} dest --sourcemap",
     "create:component": "tfolder tfolder/component src/components",
-    "create:hook": "tfolder tfolder/hook src/hooks"
+    "create:hook": "tfolder tfolder/hook src/hooks",
+    "test": "karma start --single-run",
+    "test:coverage": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false"
   },
   "dependencies": {
     "atomico": "^1.0.4",
     "otion": "^0.5.5"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.10.4",
+    "@open-wc/testing": "^2.5.23",
+    "@open-wc/testing-karma": "^4.0.3",
+    "deepmerge": "^4.2.2",
     "estack": "^0.14.1",
+    "karma": "^5.1.1",
     "tfolder-cli": "^0.2.0"
   },
   "exports": {
