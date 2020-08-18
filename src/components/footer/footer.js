@@ -5,7 +5,7 @@ const Footer = () => {
   return html`
     <host>
       <p>
-        Created by rongying. I know I butchered the font pairings. Font used: <a href="https://www.recursive.design/">Recursive.</a>
+        Created by rongyingkoh. I know I butchered the font pairings. Font used: <a href="https://www.recursive.design/">Recursive.</a>
       </p>
       <a href="https://github.com/kohrongying/variable-fonts-primer">Github Source Code</a>
     </host>`;
