@@ -10,8 +10,6 @@ module.exports = config => {
           type: 'module' 
         },
       ],
-
-      // see the karma-esm docs for all options
       esm: {
         // if you are using 'bare module imports' you will need this option
         nodeResolve: true,

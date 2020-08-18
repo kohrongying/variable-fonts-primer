@@ -25,7 +25,6 @@
     "otion": "^0.5.5"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-jsx": "^7.10.4",
     "@open-wc/testing": "^2.5.23",
     "@open-wc/testing-karma": "^4.0.3",
     "deepmerge": "^4.2.2",
